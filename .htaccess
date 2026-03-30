@@ -1,0 +1,28 @@
+RewriteEngine On
+
+# Block direct access to important FOLDERS but allow FILES in uploads
+RewriteRule ^(application|system|vendor)($|/) index.php/404 [L]
+
+# Allow all files inside uploads and assets (images, css, js)
+RewriteCond %{REQUEST_URI} ^/uploads/ [NC]
+RewriteCond %{REQUEST_URI} !\.php$ [NC]
+RewriteRule .* - [L]
+
+# Normal CI3 routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+
+
+# RewriteEngine On
+
+# # Prevent direct access to application, system, assets, uploads, and vendor folders but allow file access
+# RewriteCond %{REQUEST_FILENAME} -d
+# RewriteRule ^(application|system|assets|uploads|vendor)($|/) index.php/404 [L]
+
+# # If file or directory does not exist, redirect to index.php
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php/$1 [L]

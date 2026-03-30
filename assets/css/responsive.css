@@ -1,0 +1,85 @@
+#sidebarCollapse, #dismiss {
+	display: none;
+}
+
+@media (max-width:991px){
+	.content-wrapper{
+		padding: 0px;
+	}
+	.content-wrapper .container{
+		/* padding: 0px; */
+		max-width:100%;
+	}
+	#header_fix {
+		width: 100%;
+	z-index: 99;
+		left: 0px;
+	}
+	.dashboard-sidebar {
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	#sidebarCollapse {
+		
+		display: block;
+		z-index: 991;
+	}
+	#sidebar {
+		width: 250px;
+		position: fixed;
+		top: 0;
+		left: -250px;
+		height: 100vh;
+		z-index: 999;
+		background: #159957;
+		background: -webkit-linear-gradient(to bottom, #155799, #159957);
+		background: linear-gradient(to bottom, #155799, #159957);
+		color: #fff;
+		transition: all 0.3s;
+		overflow-y: scroll !important;
+		box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+	}
+	#sidebar.active {
+		left: 0;
+	}
+	#dismiss {
+		width: 35px;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		background: #ffab00;
+		position: absolute;
+		top: 10px;
+		display: block;
+		right: 10px;
+		cursor: pointer;
+		-webkit-transition: all 0.3s;
+		-o-transition: all 0.3s;
+		transition: all 0.3s;
+	}
+	#dismiss:hover {
+		background: #fff;
+		color: #7386d5;
+	}
+	.Side_overlay {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.7);
+		z-index: 998;
+		display: none;
+		top: 0;
+	}
+	.schl-btn-green, .schl-btn-border-green, .schl-btn-yellow, .school-table thead th {
+		font-size: 12px !important;
+	}
+	header svg {
+		width: 15px;
+	}
+	.user-input-wrp input:focus~.floating-label, .user-input-wrp input:not(:focus):valid~.floating-label {
+		font-size: 12px;
+	}
+	.user-input-wrp .floating-label {
+		font-size: 12px;
+	}
+}
