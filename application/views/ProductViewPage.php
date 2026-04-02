@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    
+    <!-- </?php echo base_url(); ?> -->
     <h1 align="center">Product View Page</h1>
 
     <form action="" method="post">
@@ -179,13 +181,14 @@
 
 
 
-    // function successCallback(response) {
-    //     window.location.href = "<?= base_url('Products') ?>";
-    // }
+    function successCallback(response) {
+    location.reload(); // Refresh the page to show the new product
+    //     window.location.href = "</?= base_url('Products') ?>";
+    }
 
-    // function errorCallback(response) {
-    //     console.log(response);
-    // }
+    function errorCallback(response) {
+        console.log(response);
+    }
 
 
     $(document).ready(function() {

@@ -61,16 +61,16 @@ $autoload['packages'] = array();
 // $autoload['libraries'] = array();
 $autoload['libraries'] = array('database', 'session');
 
-// $autoload['libraries'] = array('upload', 'email', 'Session', 'form_validation', 'pagination', 'accesscontrol_lib', 'ImageLibrary', 'imageHandler');
+$autoload['libraries'] = array('upload', 'email', 'Session', 'form_validation', 'pagination', 'accesscontrol_lib', 'ImageLibrary', 'imageHandler');
 
-// $CI = &get_instance();
-// // Load MyJwt library
-// $CI->load->library('session');
-// if (isset($_SESSION['emp_data_session']['encoded_db'])) {
-//     $autoload['libraries'][] = 'database';
-// } elseif (!empty($_SESSION['student_session']['encoded_db'])) {
-//     $autoload['libraries'][] = 'database';
-// }
+$CI = &get_instance();
+// Load MyJwt library
+$CI->load->library('session');
+if (isset($_SESSION['emp_data_session']['encoded_db'])) {
+    $autoload['libraries'][] = 'database';
+} elseif (!empty($_SESSION['student_session']['encoded_db'])) {
+    $autoload['libraries'][] = 'database';
+}
 /*
 /*
 | -------------------------------------------------------------------

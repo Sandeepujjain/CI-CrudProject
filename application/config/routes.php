@@ -53,7 +53,7 @@ $route['default_controller'] = 'ProductController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['Products'] = 'ProductController/Test';
+$route['products'] = 'ProductController/Test';
 
 
 

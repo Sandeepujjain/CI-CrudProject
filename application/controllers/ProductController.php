@@ -24,6 +24,13 @@ class ProductController extends CI_Controller
     //     $this->load->helper('common_helper'); // 👈 important
     // }
 
+
+    public function index()
+    {
+        // base URL hit hone par Test method call hoga
+        redirect('products');
+    }
+
     public function Test()
     {
         // echo "Hello World";
