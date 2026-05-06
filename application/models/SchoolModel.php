@@ -1936,21 +1936,78 @@ class ProductsModel extends ExtendFunctionModel
         // ]
     ];
 
-    public function getProductsData(&$filter = null)
-    {
-        try {
-            $this->tableAlias('products');
-            $this->select('products.*');
+    // public function getProductsData(&$filter = null)
+    // {
+    //     try {
+    //         $this->tableAlias('products');
+    //         $this->select('products.*');
 
-            $result = $this->findAll();
-            return $result;
-        } catch (Exception $e) {
-            // Log the error and rethrow the exception if needed
-            log_message('error', 'Failed to fetch Products Data: ' . $e->getMessage());
-            throw $e;
+    //         $result = $this->findAll();
+    //         return $result;
+    //     } catch (Exception $e) {
+    //         // Log the error and rethrow the exception if needed
+    //         log_message('error', 'Failed to fetch Products Data: ' . $e->getMessage());
+    //         throw $e;
+    //     }
+    // }
+}
+class UsersModel extends ExtendFunctionModel
+{
+    public string $tableName = "users";
+    public string $primaryKey = "id";
+    public array $allowedFields = ['id', 'name', 'email', 'password', 'token', 'created_at'];
+
+    // Callback functions
+    public array $beforeInsert = ['alltrim', 'hashPassword'];
+    public array $beforeUpdate = ['alltrim', 'hashPassword'];
+    public array $beforeDelete = [];
+
+    // After Create, Update, Delete
+    public array $afterInsert = [];
+    public array $afterUpdate = [];
+    public array $afterDelete = [];
+
+    public bool $skipValidation = false;
+
+    public array $validationRules = [
+        // 'name' => 'required|regex_match[/^[a-zA-Z\s]+$/]',
+        // 'email' => 'required|valid_email|is_unique[users.email,id,{id}]',
+        // 'password' => 'required|min_length[6]',
+    ];
+
+    public array $validationMessages = [
+        // 'name' => [
+        //     'required' => 'This field is required.',
+        //     'regex_match' => 'Please enter alphabetic characters and spaces only.',
+        // ],
+        // 'email' => [
+        //     'required' => 'This field is required.',
+        //     'valid_email' => 'Please enter a valid email address.',
+        //     'is_unique' => 'This email address is already registered.',
+        // ],
+        // 'password' => [
+        //     'required' => 'This field is required.',
+        //     'min_length' => 'Password must be at least 6 characters long.',
+        // ]
+    ];
+
+    public function verifyCredentials($email, $password)
+    {
+        $this->db->where('email', $email);
+        $query = $this->db->get('users');
+        $user = $query->row_array();
+
+        // Check if user exists and password matches
+        if ($user && $user['password'] == $password) {
+            return $user;
         }
+
+        return false;
     }
 }
+
+
+
 
 // class TemplateModel extends ExtendFunctionModel
 // {

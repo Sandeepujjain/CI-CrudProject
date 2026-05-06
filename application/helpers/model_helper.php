@@ -232,3 +232,17 @@ if (!function_exists('_LM_ProductsModel')) {
         return $CI->ProductsModel;
     }
 }
+
+if (!function_exists('_LM_UsersModel')) {
+    /**
+     * Load and return an instance of the UsersModel class.
+     * @return UsersModel
+     *   The instance of UsersModel.
+     */
+    function _LM_UsersModel()
+    {
+        $CI = &get_instance();
+        $CI->load->model('UsersModel');
+        return $CI->UsersModel;
+    }
+}
